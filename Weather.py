@@ -79,13 +79,13 @@ pageText = str(pageText.read())
 A = pageText[45:]
 print(A)
 list = A.split()
-Airport = list[0]
+#Airport = list[0]
 
-Day = list[1][0:2]
-Hour = list[1][2:4]
-Minute = list[1][4:6]
+Day = list[0][0:2]
+Hour = list[0][2:4]
+Minute = list[0][4:6]
 
-WindDir = list[2][0:3]
+WindDir = list[1][0:3]
 if WindDir == "VRB":
     WindDir = "Variable"
 elif WindDir == "CLM":
@@ -95,89 +95,90 @@ else:
     WindDirection = int(WindDir)
     WindDirComp = Degree(WindDir)
 
-WindSpeed = int(list[2][3:5])
-if list[2][5] == "K":
+WindSpeed = int(list[1][3:5])
+if list[1][5] == "K":
     WindMeasurement = "Knots"
     WindMPH = round(WindSpeed * 1.15078)
-elif list[2][5] == "M":
+elif list[1][5] == "M":
     WindMeasurement = "Meters per Second"
     WindMPH = round(WindSpeed * 2.23694)
 
-Visibility = list[3][:-2]
+Visibility = list[2][:-2]
 
 #Weather Types
-if list[4][0:1] == "-":
+if list[3][0:1] == "-":
     Weather1 = "Light"
-elif list[4][0:1] == "+":
+elif list[3][0:1] == "+":
     Weather1 = "Heavy"
-elif list[4][0:2] == "VC":
+elif list[3][0:2] == "VC":
     Weather1 = "In the vicinity"
-elif list[4][0:2] == "MI":
+elif list[3][0:2] == "MI":
     Weather1 = "Shallow"
-elif list[4][0:2] == "PR":
+elif list[3][0:2] == "PR":
     Weather1 = "Partial"
-elif list[4][0:2] == "BC":
+elif list[3][0:2] == "BC":
     Weather1 = "Patches"
-elif list[4][0:2] == "DR":
+elif list[3][0:2] == "DR":
     Weather1 = "Low drifting"
-elif list[4][0:2] == "BL":
+elif list[3][0:2] == "BL":
     Weather1 = "Blowing"
-elif list[4][0:2] == "SH":
+elif list[3][0:2] == "SH":
     Weather1 = "Showers"
-elif list[4][0:2] == "TS":
+elif list[3][0:2] == "TS":
     Weather1 = "Thunderstorms"
-elif list[4][0:2] == "FZ":
+elif list[3][0:2] == "FZ":
     Weather1 = "Freezing"
-elif list[4][0:2] == "RA":
+elif list[3][0:2] == "RA":
     Weather1 = "Rain"
-elif list[4][0:2] == "DZ":
+elif list[3][0:2] == "DZ":
     Weather1 = "Drizzle"
-elif list[4][0:2] == "SN":
+elif list[3][0:2] == "SN":
     Weather1 = "Snow"
-elif list[4][0:2] == "SG":
+elif list[3][0:2] == "SG":
     Weather1 = "Snow Grains"
-elif list[4][0:2] == "IC":
+elif list[3][0:2] == "IC":
     Weather1 = "Ice Crystals"
-elif list[4][0:2] == "PL":
+elif list[3][0:2] == "PL":
     Weather1 = "Ice Pellets"
-elif list[4][0:2] == "GR":
+elif list[3][0:2] == "GR":
     Weather1 = "Hail"
-elif list[4][0:2] == "GS":
+elif list[3][0:2] == "GS":
     Weather1 = "Small Hail"
-elif list[4][0:2] == "UP":
+elif list[3][0:2] == "UP":
     Weather1 = "Unknown Precipitation"
-elif list[4][0:2] == "FG":
+elif list[3][0:2] == "FG":
     Weather1 = "Fog"
-elif list[4][0:2] == "VA":
+elif list[3][0:2] == "VA":
     Weather1 = "Volcanic Ash"
-elif list[4][0:2] == "BR":
+elif list[3][0:2] == "BR":
     Weather1 = "Broken Clouds"
-elif list[4][0:2] == "HZ":
+elif list[3][0:2] == "HZ":
     Weather1 = "Haze"
-elif list[4][0:2] == "DU":
+elif list[3][0:2] == "DU":
     Weather1 = "Widespread Dust"
-elif list[4][0:2] == "FU":
+elif list[3][0:2] == "FU":
     Weather1 = "Smoke"
-elif list[4][0:2] == "SA":
+elif list[3][0:2] == "SA":
     Weather1 = "Sand"
-elif list[4][0:2] == "PY":
+elif list[3][0:2] == "PY":
     Weather1 = "Spray"
-elif list[4][0:2] == "SQ":
+elif list[3][0:2] == "SQ":
     Weather1 = "Squalls"
-elif list[4][0:2] == "PO":
+elif list[3][0:2] == "PO":
     Weather1 = "Dust or Sand Whirls"
-elif list[4][0:2] == "DS":
+elif list[3][0:2] == "DS":
     Weather1 = "Duststorm"
-elif list[4][0:2] == "SS":
+elif list[3][0:2] == "SS":
     Weather1 = "Sandstorm"
-elif list[4][0:2] == "FC":
+elif list[3][0:2] == "FC":
     Weather1 = "Funnel Cloud"
-elif list[4][0:3] == "CLR":
+elif list[3][0:3] == "CLR":
     Weather1 = "Clear"
 else:
     Weather1 = "Unknown Weather"
 
-print("Airport: " + Airport)
+#print("Airport: " + Airport)
+print("Airpor: " + ICAO)
 print("Day of Month is: " + Day + "th")
 print("Time of Reading: " + Hour + ":" + Minute + " GMT")
 print("Wind Direction: " + WindDirDeg)
