@@ -81,9 +81,9 @@ print(A)
 list = A.split()
 Airport = list[0]
 
-Day = list[1][0:2]
-Hour = list[1][2:4]
-Minute = list[1][4:6]
+Day = list[0][0:2]
+Hour = list[0][2:4]
+Minute = list[0][4:6]
 
 WindDir = list[2][0:3]
 if WindDir == "VRB":
@@ -101,7 +101,7 @@ if list[2][5] == "K":
     WindMPH = round(WindSpeed * 1.15078)
 elif list[2][5] == "M":
     WindMeasurement = "Meters per Second"
-    WindMPH = round(WindSpeed * 2.23694)
+    WindMPH = round(WindSpeed * 2.23694, 0)
 
 Visibility = list[3][:-2]
 
@@ -177,15 +177,34 @@ elif list[4][0:3] == "CLR":
 else:
     Weather1 = "Unknown Weather"
 
-print("Airport: " + Airport)
+#Temperature
+temperature = int(list[5][0:2])
+ftemperature = int(round(temperature * 9 / 5 + 32, 0))
+
+#Dew Point
+dewpoint = int(list[5][4:6])
+fdewpoint = int(round(dewpoint * 9 / 5 + 32, 0))
+
+#Pressure
+pressure = int(list[6][1:6])
+pressure = float(round(pressure / 100, 2))
+mbpressure = int(round(pressure * 33.8637526, 0))
+
+print("Airport: " + ICAO)
 print("Day of Month is: " + Day + "th")
 print("Time of Reading: " + Hour + ":" + Minute + " GMT")
 print("Wind Direction: " + WindDirDeg)
 print("                " + WindDirComp)
-print("Wind Speed: " + str(WindSpeed) + " " + WindMeasurement)
-print("            " + str(WindMPH) + " Miles per Hour")
+print("Wind Speed: " + str(WindMPH) + " Miles per Hour")
+print("            " + str(WindSpeed) + " " + WindMeasurement)
 print("Visibility: " + Visibility + " Miles")
 print("The current weather is " + Weather1)
+print("Temperature: " + str(ftemperature) + "°F")
+print("             " + str(temperature) + "°C")
+print("Dew Point: " + str(fdewpoint) + "°F")
+print("           " + str(dewpoint) + "°C")
+print("Pressure: " + str(pressure) + " inches")
+print("          " + str(mbpressure) + " millibars")
 
 print("")
 print("Press [Enter] to exit.")
